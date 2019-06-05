@@ -37,9 +37,19 @@ public class Parse {
 	private String mysta() {
 		return "spielt solos immer allein";
 	}
+	private String gosu() {
+		return "super cup champion 2019 only good clans keroplay hype & put in title";
+	}
+	private String tetsu() {
+		return "ginger ale";
+	}
+	private String jhaymaster() {
+		return "iam best newz player I trashtalk all but lose all 1v1";
+	}
 	
-	public static String helpCommands() {
-		return "{geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, mysta, fn *name*}";
+	
+	public String helpCommands() {
+		return "[geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, mysta, fn *name*, cs *steamID*, gosu, mysta, tetsu, jhaymaster]";
 	}
 
 	public String getCommand() {
@@ -70,6 +80,15 @@ public class Parse {
 			}
 			if (gi.userInput().equalsIgnoreCase("mysta")) {
 				return mysta();
+			}
+			if (gi.userInput().equalsIgnoreCase("gosu")) {
+				return gosu();
+			}
+			if (gi.userInput().equalsIgnoreCase("tetsu")) {
+				return tetsu();
+			}
+			if (gi.userInput().equalsIgnoreCase("jhaymaster")) {
+				return jhaymaster();
 			}
 			return null;
 		} catch (Exception e) {
