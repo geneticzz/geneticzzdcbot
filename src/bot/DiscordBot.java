@@ -82,9 +82,9 @@ public class DiscordBot extends ListenerAdapter {
 		}
 		
 		try {
-			if (commandsString.length == 3) {
+			if (commandsString.length == 3 && content.startsWith("!")) {
 				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1] + " " + commandsString[2])).queue();
-			} else if (commandsString.length == 2) {
+			} else if (commandsString.length == 2 && content.startsWith("!")) {
 				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1])).queue();
 			}
 			
