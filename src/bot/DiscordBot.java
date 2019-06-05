@@ -12,6 +12,7 @@ import APIs.FortniteStatsAPI;
 import commands.Commands;
 import commands.CsCommand;
 import commands.FortniteCommand;
+import commands.HelpCommand;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -40,6 +41,7 @@ public class DiscordBot extends ListenerAdapter {
 		parse = new Parse(gi);
 		commands.put("fn", new FortniteCommand(fnapi, gi));
 		commands.put("cs", new CsCommand(csapi, gi));
+		commands.put("help", new HelpCommand(gi));
 	}
 
 	public String getContent() {
@@ -75,9 +77,7 @@ public class DiscordBot extends ListenerAdapter {
 		String[] commandsString = contentToSub.split(" ");
 		MessageChannel channel = event.getChannel();
 		
-		if (contentToSub.equalsIgnoreCase("help")) {
-			channel.sendMessage(parse.helpCommands()).queue();
-		} else if (parse.getCommand() != null) {
+		if (parse.getCommand() != null) {
 			channel.sendMessage(parse.getCommand()).queue();
 		}
 		

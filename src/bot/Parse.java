@@ -35,7 +35,7 @@ public class Parse {
 		return "kebap maker dönerman";
 	}
 	
-	public String helpCommands() {
+	public static String helpCommands() {
 		return "{geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, fn *name*}";
 	}
 
