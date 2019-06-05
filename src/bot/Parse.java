@@ -34,9 +34,12 @@ public class Parse {
 	private String nirassa() {
 		return "kebap maker dönerman";
 	}
+	private String mysta() {
+		return "spielt solos immer allein";
+	}
 	
 	public static String helpCommands() {
-		return "{geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, fn *name*}";
+		return "{geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, mysta, fn *name*}";
 	}
 
 	public String getCommand() {
@@ -64,6 +67,9 @@ public class Parse {
 			}
 			if (gi.userInput().equalsIgnoreCase("nirassa")) {
 				return nirassa();
+			}
+			if (gi.userInput().equalsIgnoreCase("mysta")) {
+				return mysta();
 			}
 			return null;
 		} catch (Exception e) {

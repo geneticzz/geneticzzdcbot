@@ -74,7 +74,7 @@ public class DiscordBot extends ListenerAdapter {
 		Message message = event.getMessage();
 		content = message.getContentRaw();
 		contentToSub = content.substring(1, content.length());
-		String[] commandsString = contentToSub.split(" ");
+		String[] commandsString = contentToSub.split(" ", 2);
 		MessageChannel channel = event.getChannel();
 		
 		if (parse.getCommand() != null) {
@@ -82,9 +82,7 @@ public class DiscordBot extends ListenerAdapter {
 		}
 		
 		try {
-			if (commandsString.length == 3 && content.startsWith("!")) {
-				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1] + " " + commandsString[2])).queue();
-			} else if (commandsString.length == 2 && content.startsWith("!")) {
+			 if (content.startsWith("!")) {
 				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1])).queue();
 			}
 			
