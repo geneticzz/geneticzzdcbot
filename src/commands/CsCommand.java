@@ -33,6 +33,8 @@ public class CsCommand implements Commands {
 	private String getStats(String name) throws JSONException, IOException {
 		StringBuilder str = new StringBuilder();
 		str.append("K/D: " + getKD(name) + "\n");
+		str.append("Kills: "+ csapi.getCSGOKills(name) + "\n");
+		str.append("Deaths: "+ csapi.getCSGODeaths(name) + "\n");
 		str.append("Played Games: "+ csapi.getCSGORoundsPlayed(name) + "\n");
 		str.append("Wins: " + csapi.getCSGOWins(name) + "\n");
 		str.append("Headshot: " + csapi.getCSGOHeadshots(name) + "\n");

@@ -72,7 +72,6 @@ public class DiscordBot extends ListenerAdapter {
 		contentToSub = content.substring(1, content.length());
 		String[] commandsString = contentToSub.split(" ", 2);
 		MessageChannel channel = event.getChannel();
-		System.out.println(jda.getPing());
 
 		if (parse.getCommand() != null) {
 			channel.sendMessage(parse.getCommand()).queue();
