@@ -82,7 +82,7 @@ public class DiscordBot extends ListenerAdapter {
 
 		try {
 			if (content.startsWith("!") && commandsString.length == 2) {
-				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1]) +"```fix\n"+ jda.getPing() + "ms\n```").queue();
+				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1])).queue();
 			}
 
 		} catch (JSONException | IOException e) {
