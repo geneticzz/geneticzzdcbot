@@ -48,4 +48,10 @@ public class CsCommand implements Commands {
 			return "Couldn't find the SteamURL, make sure you've chosen the right one";
 		}
 	}
+
+	@Override
+	public String executeOneStringCommands() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

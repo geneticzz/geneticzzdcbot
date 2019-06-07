@@ -35,4 +35,10 @@ public class FortniteCommand implements Commands {
 			return "Error, name doesn't exist.";
 		}
 	}
+
+	@Override
+	public String executeOneStringCommands() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

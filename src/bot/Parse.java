@@ -1,11 +1,17 @@
 package bot;
 
+import java.util.HashMap;
+
 public class Parse {
 
 	private getInput gi;
+	private DiscordBot dc;
+	private HashMap<String, String> output;
 
-	public Parse(getInput gi) {
+	public Parse(getInput gi, DiscordBot dc) {
 		this.gi = gi;
+		this.dc = dc;
+		output = new HashMap<String, String>();
 	}
 
 	private String geneticzz() {
@@ -51,52 +57,30 @@ public class Parse {
 	private String jhaymaster() {
 		return "iam best newz player I trashtalk all but lose all 1v1";
 	}
-	
-	
 	public String helpCommands() {
-		return "[geneticzz, juifar, flowz, turturz, keroplay, volishq, sixeena, nirassa, mysta, fn *name*, cs *steamID*, gosu, mysta, tetsu, jhaymaster]";
+		return "Random commands: " + output.keySet().toString() + "\nGame commands: " + dc.getCommandsInput();
 	}
+
+
+
 
 	public String getCommand() {
 		try {
-			if (gi.userInput().equalsIgnoreCase("geneticzz")) {
-				return geneticzz();
-			}
-			if (gi.userInput().equalsIgnoreCase("juifar")) {
-				return juifar();
-			}
-			if (gi.userInput().equalsIgnoreCase("flowz")) {
-				return flowz();
-			}
-			if (gi.userInput().equalsIgnoreCase("turturz")) {
-				return turturz();
-			}
-			if (gi.userInput().equalsIgnoreCase("keroplay")) {
-				return keroplay();
-			}
-			if (gi.userInput().equalsIgnoreCase("volishq")) {
-				return volishq();
-			}
-			if (gi.userInput().equalsIgnoreCase("sixeena")) {
-				return sixeena();
-			}
-			if (gi.userInput().equalsIgnoreCase("nirassa")) {
-				return nirassa();
-			}
-			if (gi.userInput().equalsIgnoreCase("mysta")) {
-				return mysta();
-			}
-			if (gi.userInput().equalsIgnoreCase("gosu")) {
-				return gosu();
-			}
-			if (gi.userInput().equalsIgnoreCase("tetsu")) {
-				return tetsu();
-			}
-			if (gi.userInput().equalsIgnoreCase("jhaymaster")) {
-				return jhaymaster();
-			}
-			return null;
-		} catch (Exception e) {
+			output.put("geneticzz", geneticzz());
+			output.put("flowz", flowz());
+			output.put("turturz", turturz());
+			output.put("keroplay", keroplay());
+			output.put("volishq", volishq());
+			output.put("sixeena", sixeena());
+			output.put("nirassa", nirassa());
+			output.put("mysta", mysta());
+			output.put("gosu", gosu());
+			output.put("tetsu", tetsu());
+			output.put("jhaymaster", jhaymaster());
+			output.put("help", helpCommands());
+			return output.get(gi.userInput());
+		}
+		catch (Exception e) {
 			return "ERROR!";
 		}
 	}

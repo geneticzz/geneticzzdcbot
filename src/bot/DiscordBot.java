@@ -32,15 +32,20 @@ public class DiscordBot extends ListenerAdapter {
 	FortniteCommand fncomm;
 	CsCommand cscomm;
 	static JDA jda;
-	private HashMap<String, Commands> commands = new HashMap<>();
+	private HashMap<String, Commands> commands;
 
 	public DiscordBot() {
 		fnapi = new FortniteStatsAPI();
 		csapi = new CSGOAPI();
 		gi = new getInput(this);
-		parse = new Parse(gi);
+		parse = new Parse(gi, this);
+		commands = new HashMap<>();
 		commands.put("fn", new FortniteCommand(fnapi, gi));
 		commands.put("cs", new CsCommand(csapi, gi));
+	}
+	
+	public String getCommandsInput() {
+		return commands.keySet().toString();
 	}
 
 	public String getContent() {
@@ -75,9 +80,6 @@ public class DiscordBot extends ListenerAdapter {
 
 		if (parse.getCommand() != null) {
 			channel.sendMessage(parse.getCommand()).queue();
-		}
-		if (contentToSub.equalsIgnoreCase("help")) {
-			channel.sendMessage(parse.helpCommands()).queue();
 		}
 
 		try {
