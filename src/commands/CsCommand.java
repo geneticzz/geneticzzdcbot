@@ -42,8 +42,10 @@ public class CsCommand implements Commands {
 	}
 	
 	public String execute(String name) throws JSONException, IOException {
-		System.out.println(name);
-		return getStats(name);
+		try {
+			return getStats(name);
+		} catch (Exception e) {
+			return "Couldn't find the SteamURL, make sure you've chosen the right one";
+		}
 	}
-
 }

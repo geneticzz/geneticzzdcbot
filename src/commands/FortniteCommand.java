@@ -29,7 +29,10 @@ public class FortniteCommand implements Commands {
 	}
 	
 	public String execute(String name) throws JSONException, IOException {
-		return getStats(name);
+		try {
+			return getStats(name);
+		} catch (Exception e) {
+			return "Error, name doesn't exist.";
+		}
 	}
-
 }

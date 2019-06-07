@@ -9,7 +9,12 @@ public class Parse {
 	}
 
 	private String geneticzz() {
-		return "A yung legend";
+		return "A yung legend\n"
+				+ "https://www.youtube.com/c/geneticzz\n"
+				+ "https://www.facebook.com/Geneticzz/\n"
+				+ "https://www.twitch.tv/geneticzztv/\n"
+				+ "https://www.instagram.com/geneticzz_/?hl=de\n"
+				+ "https://steamcommunity.com/id/geneticzz2k\n";
 	}
 
 	private String juifar() {
