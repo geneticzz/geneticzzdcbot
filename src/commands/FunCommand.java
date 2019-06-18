@@ -12,10 +12,8 @@ import APIs.FortniteStatsAPI;
 import bot.DiscordBot;
 import bot.getInput;
 
-public class HelpCommand implements Commands {
+public class FunCommand implements Commands {
 	
-	private getInput gi;
-	private DiscordBot dc;
 	private HashMap<String, String> output;
 	private String geneticzz 
 		= "A yung legend\n"
@@ -37,10 +35,8 @@ public class HelpCommand implements Commands {
 	private String jhaymaster = "iam best newz player I trashtalk all but lose all 1v1";
 	private String tetsu = "ginger ale";
 	
-	public HelpCommand(getInput gi, DiscordBot dc) {
+	public FunCommand() {
 		output = new HashMap<>();
-		this.dc = dc;
-		this.gi = gi;
 		output.put("geneticzz", geneticzz);
 		output.put("juifar", juifar);
 		output.put("flowz", flowz);
@@ -54,17 +50,14 @@ public class HelpCommand implements Commands {
 		output.put("tetsu", tetsu);
 		output.put("jhaymaster", jhaymaster);
 	}
-		
-	private String helpCommands() {
-		return "Random commands: " + output.keySet().toString() + "\n\nGame commands: " + dc.getCommandsInput();
-	}
 	
+	@Override
 	public String execute(String name) throws JSONException, IOException {
-		return name;
+		return output.get(name);
 	}
 
 	@Override
 	public String executeOneStringCommands() {
-		return helpCommands();
+		return null;
 	}
 }
