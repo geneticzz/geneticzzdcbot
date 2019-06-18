@@ -16,7 +16,5 @@ public class getInput {
 		String command = userInput().substring(1, userInput().length());
 		String[] split = command.split(" ");
 		return split;
-	}
-	
-	
+	}	
 }

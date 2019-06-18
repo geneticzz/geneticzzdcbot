@@ -12,6 +12,7 @@ import APIs.FortniteStatsAPI;
 import commands.Commands;
 import commands.CsCommand;
 import commands.FortniteCommand;
+import commands.HelpCommand;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -26,7 +27,6 @@ public class DiscordBot extends ListenerAdapter {
 	private getInput gi;
 	private FortniteStatsAPI fnapi;
 	private CSGOAPI csapi;
-	private Parse parse;
 	private String contentToSub;
 	String content;
 	FortniteCommand fncomm;
@@ -38,10 +38,10 @@ public class DiscordBot extends ListenerAdapter {
 		fnapi = new FortniteStatsAPI();
 		csapi = new CSGOAPI();
 		gi = new getInput(this);
-		parse = new Parse(gi, this);
 		commands = new HashMap<>();
 		commands.put("fn", new FortniteCommand(fnapi, gi));
 		commands.put("cs", new CsCommand(csapi, gi));
+		commands.put("help", new HelpCommand(gi, this));
 	}
 	
 	public String getCommandsInput() {
@@ -78,13 +78,11 @@ public class DiscordBot extends ListenerAdapter {
 		String[] commandsString = contentToSub.split(" ", 2);
 		MessageChannel channel = event.getChannel();
 
-		if (parse.getCommand() != null) {
-			channel.sendMessage(parse.getCommand()).queue();
-		}
-
 		try {
 			if (content.startsWith("!") && commandsString.length == 2) {
 				channel.sendMessage(commands.get(commandsString[0]).execute(commandsString[1])).queue();
+			} else if (content.startsWith("!") && commandsString.length == 1) {
+				channel.sendMessage(commands.get(commandsString[0]).executeOneStringCommands()).queue();
 			}
 
 		} catch (JSONException | IOException e) {

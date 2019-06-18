@@ -13,7 +13,6 @@ import org.json.JSONObject;
 public class FortniteStatsAPI {
 
 	private JSONArray stats;
-	private GetAPIS getAPIS = new GetAPIS();
 
 	private void loadStats(String username, String plattform) throws IOException, JSONException {
 				System.setProperty("http.agent", "Chrome");
